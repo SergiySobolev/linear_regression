@@ -6,3 +6,4 @@ scipy==1.0.0
 pandas==0.21.1
 plotly
 scikit-learn
+statsmodels
