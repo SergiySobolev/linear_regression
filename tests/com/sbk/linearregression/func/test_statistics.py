@@ -17,10 +17,10 @@ class TestStatistics(unittest.TestCase):
         self.assertAlmostEqual(actual, expected)
 
     @parameterized.expand([
-        ["first", (4,15,3,10,15,9), (9,17,8,11,14,12), .5125],
-        ["second", (1,2,3), (1,2,3), 1],
-        ["third", (1,2,3), (3,2,1), -3],
-        ["fourth", (1,2,3), (2,2,2), 0],
+        ["first", (4, 15, 3, 10, 15, 9), (9, 17, 8, 11, 14, 12), .5125],
+        ["second", (1, 2, 3), (1, 2, 3), 1],
+        ["third", (1, 2, 3), (3, 2, 1), -3],
+        ["fourth", (1, 2, 3), (2, 2, 2), 0],
     ])
     def test_coefficient_of_determination_parametrized(self, name, y, p_y, expected):
         actual = coefficient_of_determination(y, p_y)
