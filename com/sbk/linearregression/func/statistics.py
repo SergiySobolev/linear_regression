@@ -8,3 +8,12 @@ def coefficient_of_determination(y, p_y):
     residuals = np.diff(np.array([y, p_y]), axis=0)
     s_s_res = np.sum(residuals**2)
     return 1 - s_s_res / s_s_tot
+
+
+def pearson_correlation_coefficient(y, p_y):
+    y_m = np.mean(y)
+    p_y_m = np.mean(p_y)
+    v1 = np.sum((y - y_m)*(p_y - p_y_m))
+    v2 = np.sum((y - y_m)**2)
+    v3 = np.sum((p_y - p_y_m)**2)
+    return v1 / np.sqrt(v2 * v3)

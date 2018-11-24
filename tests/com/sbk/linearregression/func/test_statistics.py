@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 from parameterized import parameterized
 from sklearn.metrics import r2_score
-from com.sbk.linearregression.func.statistics import coefficient_of_determination
+from com.sbk.linearregression.func.statistics import coefficient_of_determination, pearson_correlation_coefficient
 
 
 class TestStatistics(unittest.TestCase):
@@ -25,3 +25,12 @@ class TestStatistics(unittest.TestCase):
     def test_coefficient_of_determination_parametrized(self, name, y, p_y, expected):
         actual = coefficient_of_determination(y, p_y)
         self.assertEqual(actual, expected)
+
+    def test_pearson_correlation_coefficient(self):
+        len = 10
+        max = 20
+        y = np.random.randint(max, size=len)
+        p_y = np.random.randint(max, size=len)
+        expected = np.corrcoef(y, p_y)[1,0]
+        actual = pearson_correlation_coefficient(y, p_y)
+        self.assertAlmostEqual(actual, expected)
