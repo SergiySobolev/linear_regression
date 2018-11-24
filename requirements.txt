@@ -7,3 +7,5 @@ pandas==0.21.1
 plotly
 scikit-learn
 statsmodels
+parameterized
+nose
