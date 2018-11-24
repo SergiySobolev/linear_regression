@@ -8,10 +8,10 @@ from com.sbk.linearregression.func.statistics import coefficient_of_determinatio
 class TestStatistics(unittest.TestCase):
 
     def test_coefficient_of_determination_generated(self):
-        l = 10
+        len = 10
         max = 20
-        y = np.random.randint(max, size=l)
-        p_y = np.random.randint(max, size=l)
+        y = np.random.randint(max, size=len)
+        p_y = np.random.randint(max, size=len)
         expected = r2_score(y, p_y)
         actual = coefficient_of_determination(y, p_y)
         self.assertAlmostEqual(actual, expected)
