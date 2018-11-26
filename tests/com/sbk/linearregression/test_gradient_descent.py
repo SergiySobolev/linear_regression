@@ -2,8 +2,10 @@ import unittest
 
 import numpy as np
 import pandas as pd
+from numpy.testing import assert_allclose
 
-from com.sbk.linearregression.stochastic_gradient_descent import vanilla_gradient_descent, coefficient_of_determination
+from com.sbk.linearregression.stochastic_gradient_descent import vanilla_gradient_descent, coefficient_of_determination\
+    , mini_batch_gradient_descent
 
 
 class TestGradientDescent(unittest.TestCase):
@@ -15,8 +17,10 @@ class TestGradientDescent(unittest.TestCase):
         z = np.around(df_adv['sales'], decimals=0)
         r = np.column_stack((x, y, z))
         theta = vanilla_gradient_descent(r, start_theta=(1, 0, 0), alpha=0.00005, max_iter=5500)
+        assert_allclose(theta, (1.09127644, 0.05149196, 0.21813561))
         pred_c = theta[0] + theta[1] * x + theta[2] * y
         cd = coefficient_of_determination(y, pred_c)
         self.assertAlmostEqual(cd, -0.0908, places=3)
         rmse = np.sqrt(np.mean((pred_c - z) ** 2))
         self.assertAlmostEqual(rmse, 1.841, places=2)
+
